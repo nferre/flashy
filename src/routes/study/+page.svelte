@@ -35,7 +35,7 @@
                 value.nb_session++;
                 return value;
             })
-            goto('/flashy')
+            goto('/flashy/flashy')
             return;
         }
         current_card++;
