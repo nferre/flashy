@@ -53,7 +53,7 @@
 
 <div class={'flex flex-col justify-around items-center h-screen overflow-hidden'}> 
     <div class={'flex items-center'}>
-        <a href='/flashy'>
+        <a href='/flashy/flashy'>
             <img src={arrow_back} alt='back arrow' class={'size-16'}/>
         </a>
         <progress value={$progress} class={'m-5 rounded border-2 border-slate-600'} />
