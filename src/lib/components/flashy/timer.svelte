@@ -14,15 +14,18 @@
     }, 1000);
 </script>
 <div
-    class={'flex gap-5 justify-center items-center basis-1/3 border-2 border-slate-600 rounded-xl shadow-lg'}>
-    <div class={'flex flex-col justify-center items-center font-virgil text-2xl size-full gap-y-5'}>
+    class={'flex gap-5 justify-center items-center basis-1/3 border-2 border-slate-600 rounded-xl shadow-lg min-h-36'}>
+    <div class={'flex flex-col justify-center items-center font-virgil text-2xl size-full gap-y-3 my-4'}>
+        {#if timer != 0}
         <span
-            use:annotate={{type: 'underline', iterations: 2, visible: true, strokeWidth: 3}}
             class={'text-green-600 text-3xl'}
         >
             {timer_s}
         </span>
 
-        <span class={'max-w-[90%]'}>until next session</span>
+        <span class={'max-w-[90%] text-center'}>avant la prochaine revision</span>
+        {:else}
+        <span class={'max-w-[90%] text-center'}>Révision prête !</span>
+        {/if}
     </div>
 </div>

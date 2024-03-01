@@ -14,7 +14,7 @@
         extra_class={is_open ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
     />
     <div class={'flex flex-col items-center w-full md:h-[85vh] lg:h-[95vh]'}>
-        <Top_bar toggle_menu={() => menu(!is_open)} />
+        <Top_bar {is_open} toggle_menu={() => menu(!is_open)} />
         <div 
             on:click={() => menu(false)}
             role={'button'}

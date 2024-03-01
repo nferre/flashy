@@ -17,17 +17,17 @@
         <hr class={'my-3 border-t-2 border-zinc-500 border-dashed'}>
         <div class={'flex flex-col font-virgil gap-5 mt-5 text-xl'}>
             <div class={'flex justify-between'}>
-                <span>My decks</span>
+                <span>Mes packets</span>
                 <Chevron_down />
             </div>
             <div class={'flex justify-between'}>
-                <span>Create deck</span>
+                <span>Créer un paquet</span>
                 <Plus />
             </div>
         </div>
     </div>
     <div class={"flex flex-col gap-5 w-4/5"}>
-        <My_button text={"Log in"} color={'#1e293b'} />
-        <My_button text={"Sign up"} color={'#14b8a6'}/>
+        <My_button text={"Se connecter"} color={'#1e293b'} />
+        <My_button text={"S'inscrire"} color={'#14b8a6'}/>
     </div>
 </div>

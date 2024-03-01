@@ -28,7 +28,7 @@
         <h2
             use:annotate={{type: 'underline', visible: true, strokeWidth: 2, iterations: 2}}
         >
-            Tags
+            Filtre
         </h2>
         <div class={'flex flex-wrap gap-5 place-content-center'}>
         {#each tags as tag, index}

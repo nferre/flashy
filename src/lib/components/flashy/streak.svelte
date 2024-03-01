@@ -16,13 +16,12 @@
 <div
     class={'flex flex-col items-center basis-1/2 border-2 border-slate-600 rounded-xl shadow-lg font-virgil text-2xl'}
 >
-    <div class={'flex flex-col items-center justify-center basis-1/2 gap-y-5'}>
-        <h2
-            use:annotate={{type: 'underline', visible: true, iterations: 1}}
-            class={'m-2'}
+    <div class={'flex flex-col items-center justify-center basis-1/2 gap-y-4 mt-2'}>
+        <span
+            class={'mx-2 text-center'}
         >
-            Streak this week :
-        </h2>
+            Série cette semaine :
+        </span>
         <div class={'flex'}>
         {#each number_streak as nb}
             <div class={'flex flex-col items-center'}>
@@ -35,16 +34,16 @@
 
     <div class={'flex items-center basis-1/2'}>
         <h2
-            class={'flex sm:inline flex-col items-center'}
+            class={'flex sm:inline mb-5 mt-2 md:mb-0 flex-col items-center'}
         >
             <span
                 use:annotate={{type: 'underline', visible: true, padding: 2}}
             >
-             Total streak :
+             Série totale :
             </span>
             <span
                 use:annotate={{type: 'circle', visible: true, color: '#ef4444', padding: 10}}
-                class={'text-2xl text-red-500 ml-2 text-truncate'}>
+                class={'mt-5 sm:my-0 text-2xl text-red-500 ml-2 text-truncate'}>
                 12 🔥
             </span>
         </h2>

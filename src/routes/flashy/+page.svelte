@@ -20,7 +20,7 @@
 </div>     
 <div class={'fixed z-10 bottom-0 flex justify-center max-h-[15%] w-full lg:w-[80%] bg-yellow-50 py-5'}>
     <a class={'cursor-pointer'} href="/flashy/study">
-        <Button style='rough' color='#14b8a6' text='STUDY !' />
+        <Button style='rough' color='#14b8a6' text='RÉVISER !' />
     </a>
 </div>
 
