@@ -28,6 +28,7 @@
     }
 
     function next_card() {
+        fliped = false;
         set_new_interval(timer, current_deck, current_card);
         if (current_card == max_card - 1)
         {
