@@ -1,12 +1,11 @@
 <script>
     import Main from '$lib/components/study/main.svelte'
-    import Icon from '$lib/components/flashy/icon_streak.svelte'
+    import Header from '$lib/components/study/header.svelte'
+    import Footer from '$lib/components/study/footer.svelte'
 	import { tweened } from 'svelte/motion';
 	import { cubicOut } from 'svelte/easing';
     import {goto} from '$app/navigation'
     import {set_new_interval} from '$lib/helper/alg.js'
-    import arrow_flip from '$lib/assets/arrow_flip.svg'
-    import arrow_back from '$lib/assets/arrow_back.svg'
     import test from '$lib/assets/test.png'
     import card_data from './testcards.json'
     import {onMount} from 'svelte'
@@ -53,20 +52,7 @@
 </script>
 
 <div class={'flex flex-col justify-around items-center h-screen overflow-hidden'}> 
-    <div class={'flex items-center'}>
-        <a href='/flashy/flashy'>
-            <img src={arrow_back} alt='back arrow' class={'size-16'}/>
-        </a>
-        <progress value={$progress} class={'m-5 rounded border-2 border-slate-600'} />
-        <button on:click={() => {fliped = !fliped}}>
-            <img src={arrow_flip} alt='flip arrow' class={'size-10'}/>
-        </button>
-    </div>
+    <Header toggle={() => fliped = !fliped} {progress}/>
     <Main {fliped} card={card_data[current_card].card} />
-    <div class={'flex w-full justify-around w-[95%] sm:w-[30%]'}>
-        <button on:click={next_card} >
-            <Icon mode={'check'} size={'size-16 cursor-pointer'}/>
-        </button>
-        <Icon mode={'cross'} size={'size-16 cursor-pointer'}/>
-    </div>
+    <Footer {next_card} />
 </div>
