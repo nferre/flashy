@@ -1,7 +1,10 @@
 
 <script>
     import {annotate} from 'svelte-rough-notation'
-    let selected = -1;
+    export let filter = {
+        id: -1,
+        tag: "none"
+    };
 
     const tags = ["rein", "poumon", "vessie", "coeur", "rate"];
     const color = [{
@@ -33,10 +36,10 @@
         <div class={'flex flex-wrap gap-5 place-content-center'}>
         {#each tags as tag, index}
             <div
-                on:click={() => {selected = selected == index ? -1 : index}}
+                on:click={() => {filter = filter.id == index ? {id: -1, tag: 'none'} : {id: index, tag: tags[index]}}}
                 style:border-color={color[index % 4].border}
                 style:background-color={color[index % 4].bg}
-                class={`select-none rounded-lg text-white hover:ring-4 ${selected == index ? 'ring-4 ring-blue-500' : ''} border-[3px] py-1 px-3`}>
+                class={`select-none rounded-lg text-white hover:ring-4 ${filter.id == index ? 'ring-4 ring-blue-500' : ''} border-[3px] py-1 px-3`}>
                 {tag}
             </div>
         {/each}

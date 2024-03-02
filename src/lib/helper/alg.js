@@ -190,12 +190,13 @@ export function sort_push(deck, target) {
     deck.push(target);
     sort_deck(deck);
 }
-export function set_new_interval(start_time, current_deck, current_card, failed = false) {
+export function set_new_interval(start_time, current_deck, current_card, deck_data, failed = false) {
     const score = failed ? get_score(start_time) : 1
     const new_info = srsFunc(current_deck[current_card].info, {score: score, lateness: get_lateness(current_deck[current_card].info)})
     current_deck[current_card].info = new_info;
     sort_deck(current_deck);
-    localStorage.setItem('data', JSON.stringify(current_deck));
+    deck_data.find(card => card.id == current_deck[current_card].id).info = new_info;
+    localStorage.setItem('data', JSON.stringify(deck_data));
     deck_info.update((value) => {
         value.timer = new_info.last_review_date + (new_info.interval * 86_400_000)
         return value;
