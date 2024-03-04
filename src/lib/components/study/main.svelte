@@ -1,8 +1,10 @@
 <script>
     import Front from '$lib/components/study/front.svelte'
     import Back from '$lib/components/study/back.svelte'
+    import Card_content from './card_content.svelte'
     export let fliped = false;
     export let card;
+    export let spoiler_visible;
 </script>
 <section
       class="w-[95%] sm:w-[60%] h-[80%] flex justify-center items-center text-white"
@@ -15,12 +17,12 @@
          style:transform={fliped ? 'rotateY(180deg)' : ''}
         >
           <div class="absolute backface-hidden w-full h-full text-black bg-slate-50 rounded-xl">
-                <Front {card} /> 
+                <Card_content {spoiler_visible} {card} recto={true} />
           </div>
           <div
             class="text-black absolute my-rotate-y-180 backface-hidden w-full h-full overflow-hidden bg-slate-50 rounded-xl"
           >
-            <Back {card}/>
+            <Card_content {card} {spoiler_visible}/>
           </div>
         </div>
       </div>

@@ -18,6 +18,7 @@
     let max_card = 20;
     let fliped = false;
     let timer;
+    let spoiler_visible = false;
 
     const progress = tweened(0.0, {
         duration: 400,
@@ -30,6 +31,7 @@
 
     function next_card() {
         fliped = false;
+        spoiler_visible = false;
         set_new_interval(timer, current_deck, current_card, deck_data);
         if (current_card == max_card - 1)
         {
@@ -65,6 +67,6 @@
 
 <div class={'flex flex-col justify-around items-center h-screen overflow-hidden'}> 
     <Header toggle={() => fliped = !fliped} {progress}/>
-    <Main {fliped} card={current_deck != undefined ? current_deck[current_card].card : undefined} />
+    <Main {fliped} {spoiler_visible} card={current_deck != undefined ? current_deck[current_card].card : undefined} />
     <Footer {next_card} />
 </div>
