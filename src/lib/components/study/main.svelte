@@ -1,6 +1,4 @@
 <script>
-    import Front from '$lib/components/study/front.svelte'
-    import Back from '$lib/components/study/back.svelte'
     import Card_content from './card_content.svelte'
     export let fliped = false;
     export let card;
