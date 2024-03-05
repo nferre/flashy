@@ -35,13 +35,13 @@
         </h2>
         <div class={'flex flex-wrap gap-5 place-content-center'}>
         {#each tags as tag, index}
-            <div
+            <button
                 on:click={() => {filter = filter.id == index ? {id: -1, tag: 'none'} : {id: index, tag: tags[index]}}}
                 style:border-color={color[index % 4].border}
                 style:background-color={color[index % 4].bg}
                 class={`select-none rounded-lg text-white hover:ring-4 ${filter.id == index ? 'ring-4 ring-blue-500' : ''} border-[3px] py-1 px-3`}>
                 {tag}
-            </div>
+            </button>
         {/each}
         </div>
     </div>

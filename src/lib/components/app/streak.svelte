@@ -1,6 +1,6 @@
 <script>
     import check from '$lib/assets/check_streak.svg'
-    import Icon_streak from '$lib/components/flashy/icon_streak.svelte'
+    import Icon_streak from '$lib/components/app/icon_streak.svelte'
     import {annotate} from 'svelte-rough-notation';
 
     const number_streak = [

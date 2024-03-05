@@ -6,7 +6,7 @@
     export let toggle;
 </script>
 <div class={'flex items-center'}>
-    <a href='/flashy/flashy'>
+    <a href='/flashy/app'>
         <img src={arrow_back} alt='back arrow' class={'size-16'}/>
     </a>
     <progress value={$progress} class={'m-5 rounded border-2 border-slate-600'} />

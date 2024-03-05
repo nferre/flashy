@@ -39,7 +39,7 @@
                 value.nb_session++;
                 return value;
             })
-            goto('/flashy/flashy')
+            goto('/flashy/app')
             return;
         }
         current_card++;

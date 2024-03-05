@@ -1,5 +1,5 @@
 <script>
-    import Icon from '$lib/components/flashy/icon_streak.svelte'
+    import Icon from '$lib/components/app/icon_streak.svelte'
 
     export let next_card;
 </script>
