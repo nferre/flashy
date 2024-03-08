@@ -5,17 +5,11 @@
     import {onMount} from 'svelte';
     
     let timer;
-    // let timer_s;
-    // deck_info.subscribe((value) => {
-    //     timer = value.timer;
-    // })
-    //
-    // let r = setInterval(() => {
-    //     timer_s = get_countdown(timer);
-    // }, 1000);
 
     onMount(() => {
-        timer = $deck_info.timer;
+        let r = setInterval(() => {
+            timer = get_countdown($deck_info.timer);
+        }, 1000);
     })
 </script>
 <div

@@ -10,7 +10,6 @@
         const test = ref(rtdb, 'mtc');
         onValue(test, (snap) => {
             const data = snap.val();
-            console.log("data:", data);
             deck_info.update((n) => {
                 n.deck = data
                 return n;

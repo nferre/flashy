@@ -20,7 +20,7 @@
     let timer;
     let spoiler_visible = false;
     let next_card_date;
-    let next_session_date;
+    let next_session_date = Number.MAX_SAFE_INTEGER;
 
     const progress = tweened(0.0, {
         duration: 400,
