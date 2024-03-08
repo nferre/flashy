@@ -1,1 +1,0 @@
-import{s as t}from"../chunks/scheduler.2NQ8PmTb.js";import{S as e,i as s}from"../chunks/index.Dknv3nWT.js";function a(n){return window.location.href="/flashy/app",[]}class l extends e{constructor(o){super(),s(this,o,a,null,t,{})}}export{l as component};
