@@ -1,4 +1,3 @@
-
 <script>
     import {annotate} from 'svelte-rough-notation'
     export let filter = {

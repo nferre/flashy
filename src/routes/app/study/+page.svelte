@@ -19,6 +19,8 @@
     let fliped = false;
     let timer;
     let spoiler_visible = false;
+    let next_card_date;
+    let next_session_date;
 
     const progress = tweened(0.0, {
         duration: 400,
@@ -29,28 +31,37 @@
         progress.set((current_card + 1) / max_card);
     }
 
+    function get_next_session_date() {
+        if (next_session_date > next_card_date) {
+            next_session_date = next_card_date;
+        }
+    }
+
     function next_card() {
         fliped = false;
         spoiler_visible = false;
-        set_new_interval(timer, current_deck, current_card, deck_data);
+        next_card_date = set_new_interval(timer, current_deck, current_card, deck_data);
+        get_next_session_date();
         if (current_card == max_card - 1)
         {
             deck_info.update((value) => {
+                value.timer = next_session_date;
                 value.nb_session++;
                 return value;
             })
+            next_session_date = 0;
             goto('/flashy/app')
             return;
         }
         current_card++;
-        timer = new Date().getTime();
+        timer = +new Date();
         get_progress();
     }
 
     onMount(() => {
-        timer = new Date().getTime();
+        timer = +new Date();
         if (!localStorage.getItem('data'))
-            localStorage.setItem('data', JSON.stringify(deck_json.map((card, index) => ({card: card.card, info: card.info, tags: card.tags, id: index}))));
+            localStorage.setItem('data', JSON.stringify($deck_info.deck.map((card, index) => ({card: card.card, info: card.info, tags: card.tags, id: index}))));
         deck_data = JSON.parse(localStorage.getItem('data'));
         if ($page.url.searchParams.has("filter")) {
             let filter = $page.url.searchParams.get("filter");

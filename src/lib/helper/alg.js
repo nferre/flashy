@@ -4,7 +4,7 @@ export function srsFunc(previous, evaluation) {
     var n, efactor, interval
 
     if (previous == null) {
-        previous = {n:0, efactor:2.5, interval:0.0, last_review_date: new Date().getTime()}
+        previous = {n:0, efactor:2.5, interval:0.0, last_review_date: +new Date()}
     }
 
     if (previous.n < 3) {
@@ -152,12 +152,11 @@ export function srsFunc(previous, evaluation) {
         }
     }
 
-    return {n, efactor, interval, last_review_date: new Date().getTime()}
+    return {n, efactor, interval, last_review_date: +new Date()}
 }
 
 export function get_score(start_time) {
-        const time_interval = new Date() - start_time
-        console.log("time interval :", time_interval)
+        const time_interval = +new Date() - start_time
         if (time_interval < 5000)
             return 5
         else if (time_interval < 10000)
@@ -172,44 +171,28 @@ export function get_lateness(info)
 {
     if (!info)
         return 0;
-    const current_review_date = new Date().getTime()
+    const current_review_date = +new Date();
     const lateness = current_review_date - (info.last_review_date + (info.interval * 86_400_000))
     return lateness / (24 * 60 * 60 * 1000)
 }
 
-export function sort_deck(deck) {
-    deck.sort((a, b) => {
-        const efactor_a = a.info ? a.info.efactor : 0;
-        const efactor_b = b.info ? b.info.efactor : 0;
-        return efactor_a - efactor_b;
-    }
-    );
-}
-
-export function sort_push(deck, target) {
-    deck.push(target);
-    sort_deck(deck);
-}
 export function set_new_interval(start_time, current_deck, current_card, deck_data, failed = false) {
-    const score = failed ? get_score(start_time) : 1
+    const score = failed ? 1  : get_score(start_time);
     const new_info = srsFunc(current_deck[current_card].info, {score: score, lateness: get_lateness(current_deck[current_card].info)})
     current_deck[current_card].info = new_info;
-    sort_deck(current_deck);
     deck_data.find(card => card.id == current_deck[current_card].id).info = new_info;
     localStorage.setItem('data', JSON.stringify(deck_data));
-    deck_info.update((value) => {
-        value.timer = new_info.last_review_date + (new_info.interval * 86_400_000)
-        return value;
-    });
+    const next_card_date = new_info.last_review_date + (new_info.interval * 86_400_000);
+    return next_card_date;
 }
 
 export function get_countdown(end_time) {
     let current_time = +new Date();
     let time_diff = end_time - current_time;
-    let time_diff_h = new Date(time_diff)
-    let min = time_diff_h.getMinutes();
-    let sec = time_diff_h.getSeconds();
     if (time_diff < 0)
         return 0;
-    return `${min < 10 ? "0" + min : min }:${sec < 10 ? "0" + sec : sec }`
+    let hour = Math.floor(time_diff / 3_600_000) % 24;
+    let min = Math.floor(time_diff / 60_000) % 60;
+    let sec = Math.floor(time_diff / 1000) % 60;
+    return `${hour < 10 ? "0" + hour : hour}:${min < 10 ? "0" + min : min }:${sec < 10 ? "0" + sec : sec }`
 }
